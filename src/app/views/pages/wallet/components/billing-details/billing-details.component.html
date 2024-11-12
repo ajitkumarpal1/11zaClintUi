@@ -1,0 +1,109 @@
+<div class="row">
+    <div class="card border-0 p-0">
+        <div class="card-body ">
+            <div class="tw-font-normal mt-2">
+                <div class="row">
+                    <div class="col-md col">
+                        <h1 class="tw-text-2xl tw-font-medium">Billing Details</h1>
+                    </div>    
+                    <div class="col-md-auto col-auto tw-space-x-2">
+                        @if (disabledAddress) {
+                            <button type="button" class="tw-btn-primary" (click)="onEditAdddress()">Edit</button>
+                        }
+                        @else {
+                            <button type="button" class="tw-btn-primary" (click)="onSaveAddress()">Save</button>
+                            <button type="button" class="tw-btn-outline-secondary" (click)="onEditAdddress()">Cancel</button>
+                        }
+                    </div>
+                </div>
+                
+            </div>
+            <div class="billing">
+                <div class="row mt-3">
+                    <div class="col-md-6 tw-space-y-2">
+                        <label for="">Business Address</label>
+                        <input type="text"
+                            placeholder="202-203, Oberon, New City Light Road, Surat - 395007, Gujarat, India" [disabled]="disabledAddress"
+                            class="form-control">
+                    </div>
+                    <div class="col-md-6 tw-space-y-2">
+                        <label for="">Business Name</label>
+                        <input type="text" placeholder="11za WhatsApp Api" class="form-control" [disabled]="disabledAddress">
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6 tw-space-y-2">
+                        <label for="">GST No.</label>
+                        <input type="text" placeholder="24AAHCE0653K1ZP" class="form-control" [disabled]="disabledAddress">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="card border-0 p-0">
+        <div class="card-body">
+            <div class="timeline ">
+                <div class="section mb-3">
+                    <div class="time-label tw-bg-primary tw-text-white tw-text-[13px] md:tw-text-[16px] tw-font-medium p-2  mb-2">
+                        <span><i class="ph-bold ph-clock"></i> Oct 7, 2024 12:39:46 AM</span>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2 col-4 tw-space-y-1 tw-text-[12px] sm:tw-text-base">
+                            <div>Old Address </div>
+                            <div class="mt-4 mt-md-1">Old GST </div>
+                            <div>Old Business Name </div>
+                            <div>Updated By </div>
+                        </div>
+                        <div class="col-md col-8 tw-space-y-1 tw-text-[12px] sm:tw-text-base tw-font-bold ">
+                            <div>202-203, Oberon, New City Light Road, Surat - 395007, Gujarat, India</div>
+                            <div> 24AAHCE0653K1ZP</div>
+                            <div>11za WhatsApp Api</div>
+                            <div>Payal Suthar</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section mb-3">
+                    <div class="time-label tw-bg-primary tw-text-white tw-text-[13px] md:tw-text-[16px] tw-font-medium p-2  mb-2">
+                        <span><i class="ph-bold ph-clock"></i> Oct 7, 2024 12:39:46 AM</span>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2 col-4 tw-space-y-1 tw-text-[12px] sm:tw-text-base">
+                            <div>Old Address </div>
+                            <div class="mt-4 mt-md-1">Old GST </div>
+                            <div>Old Business Name </div>
+                            <div>Updated By </div>
+                        </div>
+                        <div class="col-md col-8 tw-space-y-1 tw-text-[12px] sm:tw-text-base tw-font-bold ">
+                            <div>202-203, Oberon, New City Light Road, Surat - 395007, Gujarat, India</div>
+                            <div> 24AAHCE0653K1ZP</div>
+                            <div>11za WhatsApp Api</div>
+                            <div>Payal Suthar</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section mb-3">
+                    <div class="time-label tw-bg-primary tw-text-white tw-text-[13px] md:tw-text-[16px] tw-font-medium p-2  mb-2">
+                        <span><i class="ph-bold ph-clock"></i> Oct 7, 2024 12:39:46 AM</span>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2 col-4 tw-space-y-1 tw-text-[12px] sm:tw-text-base">
+                            <div>Old Address </div>
+                            <div class="mt-4 mt-md-1">Old GST </div>
+                            <div>Old Business Name </div>
+                            <div>Updated By </div>
+                        </div>
+                        <div class="col-md col-8 tw-space-y-1 tw-text-[12px] sm:tw-text-base tw-font-bold ">
+                            <div>202-203, Oberon, New City Light Road, Surat - 395007, Gujarat, India</div>
+                            <div> 24AAHCE0653K1ZP</div>
+                            <div>11za WhatsApp Api</div>
+                            <div>Payal Suthar</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

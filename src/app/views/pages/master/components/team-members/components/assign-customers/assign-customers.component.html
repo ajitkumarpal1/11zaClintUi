@@ -1,0 +1,105 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-6">
+      <h1 class="tw-text-4xl tw-font-bold">Assigned Customers List</h1>
+      <span class="tw-text-sm tw-capitalize  text-muted">Manage your customers list</span>
+    </div>
+    <div class="col-md-6">
+      <div class="tw-flex tw-items-center tw-justify-end tw-gap-1">
+        <button type="button" disabled class="tw-btn-primary tw-flex tw-items-center tw-gap-1">
+          Exports
+        </button>
+        <button type="button" class="tw-btn-outline-primary" routerLink="/master/team-members">
+          Back
+        </button>
+      </div>
+    </div>
+    <div class="col-12 my-2">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="tw-relative ms-3">
+                <input type="text" class="tw-form-control-search" placeholder="Search">
+                <i
+                  class="ph-bold ph-magnifying-glass tw-absolute tw-left-0 tw-translate-y-[70%] tw-text-gray-400 tw-font-bold"></i>
+              </div>
+            </div>
+            <div class="col-md-6 tw-flex tw-items-center tw-gap-4 tw-justify-end">
+              <select class="form-select lg:tw-w-1/4">
+                <option value="10">10 per page</option>
+                <option value="20">20 per page</option>
+                <option value="50">50 per page</option>
+                <option value="100">100 per page</option>
+                <option value="200">200 per page</option>
+              </select>
+            </div>
+          </div>
+          <div class="table-responsive mt-3">
+            <table class="table table-hover table-striped">
+              <thead class="table-bordered">
+                <tr class="tw-text-sm">
+                  <th scope="col" [width]="'2%'">#</th>
+                  <th scope="col">Team Member Name</th>
+                  <th scope="col">Customer Name</th>
+                  <th scope="col">Customer Number</th>
+                  <th scope="col">Response Status</th>
+                  <th scope="col">Assigned At</th>
+                </tr>
+              </thead>
+              <tbody class="table-dark" *ngIf="teamMemberDocs.docs.length == 0">
+                <tr>
+                  <td colspan="6" class="text-center">
+                    <span class="tw-text-sm tw-text-gray-400">No data found!</span>
+                  </td>
+                </tr>
+              </tbody>
+              <tbody *ngIf="teamMemberDocs.docs.length > 0">
+                <tr
+                  *ngFor="let team of teamMemberDocs.docs | paginate: { itemsPerPage: teamMemberDocs.limit, currentPage: teamMemberDocs.page }; let i = index">
+                  <th class="tw-text-sm" scope="row">{{ i + 1 }}</th>
+                  <td><span class="tw-text-sm">{{ team.name }}</span></td>
+                  <td class="tw-text-sm">{{ team.roleId?.name || 'N/A' }}</td>
+                  <td>
+                    <div class="tw-flex tw-flex-col tw-gap-1 tw-justify-start tw-items-start">
+                      <span *ngFor="let item of team.teams" class="badge bg-primary">{{ item | titlecase }}</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="tw-flex tw-gap-1 tw-justify-start tw-items-start">
+                      <span *ngFor="let item of team.tags?.preview || []"
+                        class="{{item != '...' ? 'badge bg-primary' : ''}}">{{ item |
+                        titlecase }}</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-check form-switch">
+                      <input
+                        class="form-check-input focus:tw-ring-0 focus:tw-outline-none active:tw-ring-0 active:tw-outline-none"
+                        type="checkbox" role="switch" [(ngModel)]="team.status">
+                    </div>
+                  </td>
+                  <td class="tw-text-center">
+                    <span
+                      class="tw-bg-primary tw-shadow-[0px_-0px_3px_5px] tw-py-[2px] tw-shadow-primary tw-animate-pulse tw-rounded-full">
+                    </span>
+                  </td>
+                  <td class="tw-text-sm">{{ (team.lastLoginAt | date : 'dd-MMM-yyyy: hh:mm') || 'N/A'}}</td>
+                  <td>
+                    <div class="tw-flex tw-justify-start tw-items-center tw-gap-2">
+                      <i class="ph-bold ph-lock-open"></i>
+                      <i class="ph-bold ph-pencil-simple-line"></i>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="d-flex align-items-center justify-content-end tw-mt-4">
+            <pagination-controls class="tw-text-primary"
+              (pageChange)="teamMemberDocs.page = $event"></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

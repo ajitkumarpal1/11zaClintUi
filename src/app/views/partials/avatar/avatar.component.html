@@ -1,0 +1,5 @@
+<div class="tw-bg-blue-500 tw-rounded-full tw-flex tw-items-center tw-justify-center tw-text-white"
+  [ngStyle]="{ 'width': size + 'px', 'height': size + 'px', 'font-size': size / 2.3 + 'px' }">
+  <span *ngIf="initials">{{ initials }}</span>
+  <i *ngIf="!initials" class="ph-duotone ph-user"></i>
+</div>

@@ -1,0 +1,26 @@
+<div [ngStyle]="{'width': width, 'height': height}"
+  class="image-preview-container tw-relative {{showModal ? 'tw-cursor-pointer' : ''}}" (click)="onImageClick()">
+  <!-- Show skeleton if the image is still loading -->
+  <div *ngIf="isLoading" class="image-skeleton"></div>
+
+  <!-- Show image once it's loaded with a fade-in animation -->
+  <img *ngIf="!isLoading" [src]="imageUrl" alt="image" [style.width]="width" [style.height]="height"
+    class="tw-rounded-md tw-object-cover" [ngClass]="{'fade-in': !isLoading}" (load)="loadImage()" />
+  <!-- Overlay (optional) -->
+  <!-- <div *ngIf="isOverlay" class="image-overlay"></div> -->
+</div>
+
+<!-- Modal -->
+<div *ngIf="showModal" class="modal fade" id="imagePreviewModal" tabindex="-1" role="dialog"
+  aria-labelledby="imagePreviewModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+  <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" (click)="onCloseClick()"></button>
+      </div>
+      <div class="modal-body tw-p-0">
+        <img [src]="getImageUrl()" alt="img" class="tw-w-full tw-h-full tw-object-cover tw-mx-auto">
+      </div>
+    </div>
+  </div>
+</div>

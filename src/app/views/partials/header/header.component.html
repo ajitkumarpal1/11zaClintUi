@@ -1,0 +1,250 @@
+<header
+  class="tw-bg-darkblue tw-p-[12px] tw-flex tw-items-center tw-select-none tw-justify-between tw-fixed tw-top-0 tw-w-full tw-z-[999]">
+  <!-- Logo Section -->
+  <div class="tw-flex tw-items-center">
+    <img src="/images/11za_logo.png" alt="Logo" class="tw-h-[35px] tw-w-[96px]">
+  </div>
+
+  <!-- Middle Navigation Section (Hidden on Mobile) -->
+  <nav class="tw-hidden xl:tw-flex tw-space-x-1 tw-justify-around">
+    <a href="#"
+      class="tw-text-white tw-px-3 tw-py-1 tw-rounded-md tw-text-sm tw-font-medium tw-flex tw-items-center tw-gap-1"
+      [ngClass]="{'tw-transition-colors tw-duration-300 tw-ease-out hover:tw-text-green-500 hover:tw-transform': !isActive('/login'), 'tw-bg-primary': isActive('/login')}">
+      <i class="tw-text-lg ph-fill ph-chats-circle"></i> Chats <span
+        class="tw-ml-1 tw-px-2 tw-py-0.5 tw-bg-red-500 tw-text-white tw-rounded-md">99+</span>
+    </a>
+    <a href="#"
+      class="tw-text-white tw-px-3 tw-py-1 tw-rounded-md tw-text-sm tw-font-medium tw-flex tw-items-center tw-gap-1"
+      [ngClass]="{'tw-transition-colors tw-duration-300 tw-ease-out hover:tw-text-green-500 hover:tw-transform': !isActive('/queue'), 'tw-bg-primary': isActive('/queue')}">
+      <i class="tw-text-lg ph-fill ph-queue"></i> Queue <span
+        class="tw-ml-1 tw-px-2 tw-py-0.5 tw-bg-red-500 tw-text-white tw-rounded-md">99+</span>
+    </a>
+    <a routerLink="customers"
+      class="tw-text-white tw-px-3 tw-py-1 tw-rounded-md tw-text-sm tw-font-medium tw-flex tw-items-center tw-gap-1"
+      [ngClass]="{'tw-transition-colors tw-duration-300 tw-ease-out hover:tw-text-green-500 hover:tw-transform': !isActive('/customers'), 'tw-bg-primary': isActive('/customers')}">
+      <i class="tw-text-lg ph-fill ph-users"></i> Customers
+    </a>
+    <a href="#"
+      class="tw-text-white tw-px-3 tw-py-1 tw-rounded-md tw-text-sm tw-font-medium tw-flex tw-items-center tw-gap-1"
+      [ngClass]="{'tw-transition-colors tw-duration-300 tw-ease-out hover:tw-text-green-500 hover:tw-transform': !isActive('/broadcast'), 'tw-bg-primary': isActive('/broadcast')}">
+      <i class="tw-text-lg ph-fill ph-broadcast"></i> Broadcast
+    </a>
+    <a href="#"
+      class="tw-text-white tw-px-3 tw-py-1 tw-rounded-md tw-text-sm tw-font-medium tw-flex tw-items-center tw-gap-1"
+      [ngClass]="{'tw-transition-colors tw-duration-300 tw-ease-out hover:tw-text-green-500 hover:tw-transform': !isActive('/template'), 'tw-bg-primary': isActive('/template')}">
+      <i class="tw-text-lg ph-fill ph-swatches"></i> Template
+    </a>
+    <a href="#"
+      class="tw-text-white tw-px-3 tw-py-1 tw-rounded-md tw-text-sm tw-font-medium tw-flex tw-items-center tw-gap-1"
+      [ngClass]="{'tw-transition-colors tw-duration-300 tw-ease-out hover:tw-text-green-500 hover:tw-transform': !isActive('/auto-reply'), 'tw-bg-primary': isActive('/auto-reply')}">
+      <i class="tw-text-lg ph-fill ph-robot"></i> Auto Reply
+    </a>
+    <a href="#"
+      class="tw-text-white tw-px-3 tw-py-1 tw-rounded-md tw-text-sm tw-font-medium tw-flex tw-items-center tw-gap-1"
+      [ngClass]="{'tw-transition-colors tw-duration-300 tw-ease-out hover:tw-text-green-500 hover:tw-transform': !isActive('/apps'), 'tw-bg-primary': isActive('/apps')}">
+      <i class="tw-text-lg ph-fill ph-squares-four"></i> Apps
+    </a>
+  </nav>
+
+
+  <!-- Hamburger Menu for Mobile -->
+  <div class="xl:tw-hidden tw-flex tw-items-center tw-gap-4">
+    <span
+      class="xl:tw-hidden tw-bg-primary tw-w-1 tw-h-1 tw-rounded-full tw-shadow-[0px_-0px_3px_5px] tw-shadow-primary tw-animate-pulse">
+    </span>
+    <button (click)="toggleMenu()" class="tw-flex tw-items-center tw-justify-center tw-p-1 tw-rounded-md">
+      <!-- Menu Icon (hamburger) -->
+      <svg *ngIf="!isMenuOpen" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+        class="tw-w-6 tw-h-6 tw-text-white tw-transform tw-transition-transform tw-duration-300 tw-ease-in-out hover:tw-rotate-180">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+      </svg>
+
+      <!-- Close Icon with scale -->
+      <svg *ngIf="isMenuOpen" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+        class="tw-w-6 tw-h-6 tw-text-white tw-transform tw-transition-transform tw-duration-300 tw-ease-in-out hover:tw-scale-125">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+
+  <!-- User Profile Section -->
+
+  <div class="tw-hidden xl:tw-flex tw-items-center tw-space-x-3">
+    <span
+      class="tw-bg-primary tw-p-1 tw-rounded-full tw-shadow-[0px_-0px_3px_5px] tw-shadow-primary tw-animate-pulse tw-mr-4"></span>
+    <div class="dropdown">
+      <!-- Dropdown Button -->
+      <button class="d-flex tw-text-white align-items-center" type="button" id="dropdownMenuButton"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        <app-avatar [name]="'Username'" />
+        <span class="ms-2">Aman Rajput</span>
+        <i class="ph-fill ph-caret-down tw-text-sm ms-3"></i>
+      </button>
+
+      <!-- Dropdown Menu -->
+      <ul class="dropdown-menu tw-max-h-[90vh] tw-overflow-auto dropdown-menu-end shadow p-0"
+        aria-labelledby="dropdownMenuButton">
+        <!-- Masters Section -->
+        <li class="dropdown-header text-muted fw-bold">Masters</li>
+        <li><a class="dropdown-item" routerLink="/master/business-profile">Company Profile</a></li>
+        <li><a class="dropdown-item" routerLink="/master/my-profile">My Profile</a></li>
+        <li><a class="dropdown-item" routerLink="/master/teams">Teams</a></li>
+        <li><a class="dropdown-item" routerLink="/master/team-members">Team Members</a></li>
+        <li><a class="dropdown-item" routerLink="/master/roles">Roles</a></li>
+        <li><a class="dropdown-item" routerLink="/master/permissions">Permissions</a></li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+
+        <!-- File Uploader Section -->
+        <li class="dropdown-header dropdown-item focus:tw-text-white active:tw-text-white fw-bold">
+          <a routerLink="/file-upload">File Uploader</a>
+        </li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+
+        <!-- Messages Section -->
+        <li class="dropdown-header text-muted fw-bold">Messages</li>
+        <li><a class="dropdown-item" href="#">Quick Replies</a></li>
+        <li><a class="dropdown-item" href="#">Interactive Messages</a></li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+
+        <!-- Wallet Section -->
+        <li class="dropdown-header dropdown-item focus:tw-text-white active:tw-text-white fw-bold">
+          <a href="#" routerLink="/wallet/topups">Wallet</a>
+        </li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+
+        <!-- Settings Section -->
+        <li class="dropdown-header text-muted fw-bold">Settings</li>
+        <li><a class="dropdown-item" href="#" routerLink="/settings/opt-in-settings">Opt-in Management</a></li>
+        <li><a class="dropdown-item" href="#" routerLink="/settings/logs">Logs</a></li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+
+        <!-- Logout Section -->
+        <li><a class="dropdown-item text-danger mb-2" href="#">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+</header>
+<div [ngClass]="{ 'tw-block': isMenuOpen, 'tw-hidden': !isMenuOpen }"
+  class="tw-fixed tw-inset-0 tw-bg-black tw-top-0 tw-bg-opacity-50 tw-z-30" (click)="toggleMenu()">
+</div>
+
+<div id="mobile-menu" [ngClass]="{ 'tw-translate-x-0': isMenuOpen, '-tw-translate-x-full': !isMenuOpen }"
+  class="tw-hidden tw-select-none xl:tw-hidden tw-transform tw-transition-transform tw-duration-300 tw-ease-in-out tw-bg-gray-800 tw-p-4 tw-fixed tw-top-0 tw-left-0 tw-w-64 tw-h-full tw-z-40 tw-flex-col tw-justify-between">
+  <nav class="tw-flex tw-flex-col tw-space-y-2 tw-mt-[80px]">
+    <a href="#"
+      class="tw-text-white tw-px-3 tw-py-1 tw-rounded-md tw-text-sm tw-font-medium tw-flex tw-items-center tw-gap-1"
+      [ngClass]="{'tw-transition-colors tw-duration-300 tw-ease-out hover:tw-text-green-500 hover:tw-transform': !isActive('/login'), 'tw-bg-primary': isActive('/login')}">
+      <i class="tw-text-lg ph-fill ph-chats-circle"></i> Chats
+    </a>
+    <a href="#"
+      class="tw-text-white tw-px-3 tw-py-1 tw-rounded-md tw-text-sm tw-font-medium tw-flex tw-items-center tw-gap-1"
+      [ngClass]="{'tw-transition-colors tw-duration-300 tw-ease-out hover:tw-text-green-500 hover:tw-transform': !isActive('/queue'), 'tw-bg-primary': isActive('/queue')}">
+      <i class="tw-text-lg ph-fill ph-queue"></i> Queue
+    </a>
+    <a href="#"
+      class="tw-text-white tw-px-3 tw-py-1 tw-rounded-md tw-text-sm tw-font-medium tw-flex tw-items-center tw-gap-1"
+      [ngClass]="{'tw-transition-colors tw-duration-300 tw-ease-out hover:tw-text-green-500 hover:tw-transform': !isActive('/customers'), 'tw-bg-primary': isActive('/customers')}">
+      <i class="tw-text-lg ph-fill ph-users"></i> Customers
+    </a>
+    <a href="#"
+      class="tw-text-white tw-px-3 tw-py-1 tw-rounded-md tw-text-sm tw-font-medium tw-flex tw-items-center tw-gap-1"
+      [ngClass]="{'tw-transition-colors tw-duration-300 tw-ease-out hover:tw-text-green-500 hover:tw-transform': !isActive('/broadcast'), 'tw-bg-primary': isActive('/broadcast')}">
+      <i class="tw-text-lg ph-fill ph-broadcast"></i> Broadcast
+    </a>
+    <a href="#"
+      class="tw-text-white tw-px-3 tw-py-1 tw-rounded-md tw-text-sm tw-font-medium tw-flex tw-items-center tw-gap-1"
+      [ngClass]="{'tw-transition-colors tw-duration-300 tw-ease-out hover:tw-text-green-500 hover:tw-transform': !isActive('/template'), 'tw-bg-primary': isActive('/template')}">
+      <i class="tw-text-lg ph-fill ph-swatches"></i> Template
+    </a>
+    <a href="#"
+      class="tw-text-white tw-px-3 tw-py-1 tw-rounded-md tw-text-sm tw-font-medium tw-flex tw-items-center tw-gap-1"
+      [ngClass]="{'tw-transition-colors tw-duration-300 tw-ease-out hover:tw-text-green-500 hover:tw-transform': !isActive('/auto-reply'), 'tw-bg-primary': isActive('/auto-reply')}">
+      <i class="tw-text-lg ph-fill ph-robot"></i> Auto Reply
+    </a>
+    <a href="#"
+      class="tw-text-white tw-px-3 tw-py-1 tw-rounded-md tw-text-sm tw-font-medium tw-flex tw-items-center tw-gap-1"
+      [ngClass]="{'tw-transition-colors tw-duration-300 tw-ease-out hover:tw-text-green-500 hover:tw-transform': !isActive('/apps'), 'tw-bg-primary': isActive('/apps')}">
+      <i class="tw-text-lg ph-fill ph-squares-four"></i> Apps
+    </a>
+  </nav>
+  <div
+    class="tw-fixed tw-bottom-0 tw-left-0 tw-bg-gray-800 tw-p-4 tw-flex tw-justify-start tw-items-center tw-gap-2 tw-border-t-2 tw-border-gray-700 tw-w-full">
+    <div class="dropdown">
+      <!-- Dropdown Button -->
+      <button class="d-flex tw-text-white align-items-center" #dropdownMobileMenu type="button" id="dropdownMenuButton"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        <app-avatar [name]="'Username'" />
+        <span class="ms-2">Aman Rajput</span>
+        <i class="ph-fill ph-caret-up tw-text-sm ms-3"></i>
+      </button>
+
+      <!-- Dropdown Menu -->
+      <ul class="dropdown-menu tw-max-h-[90vh] tw-select-none tw-overflow-auto dropdown-menu-end shadow p-0"
+        aria-labelledby="dropdownMenuButton">
+        <!-- Masters Section -->
+        <li class="dropdown-header text-muted fw-bold">Masters</li>
+        <li><a (click)="toggleMenu()" class="dropdown-item" routerLink="/master/business-profile">Company Profile</a>
+        </li>
+        <li><a (click)="toggleMenu()" class="dropdown-item" routerLink="/master/my-profile">My Profile</a></li>
+        <li><a (click)="toggleMenu()" class="dropdown-item" routerLink="/master/teams">Teams</a></li>
+        <li><a (click)="toggleMenu()" class="dropdown-item" routerLink="/master/team-members">Team Members</a></li>
+        <li><a (click)="toggleMenu()" class="dropdown-item" routerLink="/master/roles">Roles</a></li>
+        <li><a (click)="toggleMenu()" class="dropdown-item" routerLink="/master/permissions">Permissions</a></li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+
+        <!-- File Uploader Section -->
+        <li class="dropdown-header dropdown-item focus:tw-text-white active:tw-text-white fw-bold">
+          <a (click)="toggleMenu()" routerLink="/file-upload">File Uploader</a>
+        </li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+
+        <!-- Messages Section -->
+        <li class="dropdown-header text-muted fw-bold">Messages</li>
+        <li><a (click)="toggleMenu()" class="dropdown-item" href="#">Quick Replies</a></li>
+        <li><a (click)="toggleMenu()" class="dropdown-item" href="#">Interactive Messages</a></li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+
+        <!-- Wallet Section -->
+        <li class="dropdown-header dropdown-item focus:tw-text-white active:tw-text-white fw-bold">
+          <a (click)="toggleMenu()" href="#" routerLink="/wallet/topups">Wallet</a>
+        </li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+
+        <!-- Settings Section -->
+        <li class="dropdown-header text-muted fw-bold">Settings</li>
+        <li><a (click)="toggleMenu()" class="dropdown-item" href="#" routerLink="/settings/opt-in-settings">Opt-in
+            Management</a></li>
+        <li><a (click)="toggleMenu()" class="dropdown-item" href="#" routerLink="/settings/logs">Logs</a></li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+
+        <!-- Logout Section -->
+        <li><a (click)="toggleMenu()" class="dropdown-item text-danger mb-2" href="#">Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile Menu (Hidden by Default) -->

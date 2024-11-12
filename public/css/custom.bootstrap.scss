@@ -1,0 +1,61 @@
+select {
+  &:focus {
+    border: 1px solid $primary !important;
+    box-shadow: none !important;
+    outline: none;
+  }
+}
+
+/* Focused State */
+.form-check-input:focus {
+  border: 1px solid $primary;
+  box-shadow: none;
+}
+
+/* Disabled State */
+.form-check-input:disabled {
+  background-color: #e9ecef; /* Use a light grey for disabled state */
+  border-color: #ced4da;
+  cursor: not-allowed;
+}
+
+/* Active State */
+.form-check-input:active {
+  background-color: none;
+  border: 1px solid $primary;
+}
+
+.form-control::placeholder {
+  color: $gray-500;
+  opacity: 1;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.form-control:disabled {
+  color: $gray-600;
+  cursor: not-allowed;
+}
+
+.form-label {
+  font-size: 0.9rem;
+}
+
+.form-sub-label {
+  padding: 0 0.3rem;
+  font-size: 0.8rem;
+  color: $gray-600;
+}
+
+.accordion-button {
+  &:focus {
+    border: none;
+    box-shadow: none;
+    outline: none;
+  }
+  &:active {
+    border: none;
+    box-shadow: none;
+    outline: none;
+  }
+}

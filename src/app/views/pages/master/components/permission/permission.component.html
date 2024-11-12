@@ -1,0 +1,79 @@
+<div class="container px-4 px-sm-0">
+    <div class="row my-5">
+        <div class="row">
+            <div class="col-md-6 col-9 ">
+                <h1 class="fs-1 fw-medium tw-text-blue-950">Permission</h1>
+                <div class="text-muted fw-medium">Manage Module-wise or Custom Permissions</div>
+            </div>
+            <div class="col-md-6 col-3 d-flex justify-content-end ">
+                <div>
+                    <button type="button" class="tw-btn-primary"><i class="ph ph-check-circle"></i> Save</button>
+                </div>
+            </div>
+        </div>
+        <div class="row tw-mt-5">
+            <div class="col-12 col-md-3  d-flex tw-space-x-2">
+                <select class="form-select" (change)="onSelectPerson($event)">
+                    <option value="" >Select</option>
+                    <option value="new role">new role</option>
+                    <option value="old Data">old Data</option>
+                    <option value="saving">saving</option>
+                </select>
+                <button type="button" class="tw-btn-primary"><i class="ph-bold ph-plus"></i></button>
+            </div>
+            @if (showAccordian) {
+                <div class="col-md-9 col d-md-flex justify-content-md-between justify-content-between mt-md-2 mt-3">
+                    @for (option of checkboxOptions; track $index) {
+                        <div class="tw-space-x-2">
+                            <input type="checkbox">
+                            <label for="" class="fw-medium text-muted">{{option}}</label>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+
+        @if (showAccordian) {
+            @for (item of accordian; track $index) {
+            <div class="row mt-4 ">
+                <div class="accordion" [id]="item.title+'id'">
+                    <div class="accordion-item shadow-sm tw-border-gray-200 ">
+                        <h2 class="accordion-header" [id]="'header'+$index">
+                            <button class="accordion-button" [class.collapsed]="!item.isOpen" type="button"
+                                (click)="toggleAccordion($index)" [attr.data-bs-target]="'collapse'+$index"
+                                aria-expanded="true" [attr.aria-controls]="'collapse'+$index">
+                                <span class="tw-text-[#0d163f] tw-font-medium tw-text-[18px]">{{item.title}}</span>
+                            </button>
+                        </h2>
+                        <div [id]="'collapse'+$index" class="accordion-collapse collapse " [class.show]="item.isOpen"
+                            [attr.aria-labelledby]="'header' + $index" [attr.data-bs-parent]="item.title+'id'">
+                            <div class="accordion-body">
+                                <div class="row tw-gap-y-5 mb-4">
+                                    @for (cards of item.cards; track $index) {
+                                    <div class="col-lg-3 col-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h1 class="mb-2">{{cards}}</h1>
+                                                <div class="checkbox mt-2 tw-space-y-3">
+                                                    @for (option of checkboxOptions; track $index) {
+                                                    <div class="tw-space-x-2">
+                                                        <input type="checkbox">
+                                                        <label for="">{{option}}</label>
+                                                    </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+            }
+        }
+    </div>
+</div>

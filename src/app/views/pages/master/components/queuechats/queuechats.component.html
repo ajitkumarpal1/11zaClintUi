@@ -1,0 +1,96 @@
+<div class="container px-4 px-sm-0 ">
+    <div class="row my-5 ">
+        <div class="row p-0">
+            <div class="col-12">
+                <h1 class="tw-text-5xl fw-medium tw-text-blue-950 tw-mb-1">Queue Chat Customers & Default Assignee</h1>
+                <div class="text-muted fw-medium">Manage your Queue Chat Customers & Set Default Assignee for Incoming
+                    Messages</div>
+            </div>
+        </div>
+        <div class="row tw-mt-5">
+            <ul class="nav nav-pills tw-border-b-[1px] tw-border-gray-200 tw-box-content">
+                <li class="nav-item">
+                    <a class="nav-link tw-cursor-pointer custom-tab-active" routerLink="queue-chats"
+                        routerLinkActive="custom-tab-active">Queue Chats</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link tw-cursor-pointer" routerLink="chats-assignment"
+                        routerLinkActive="custom-tab-active">Chats Assignment</a>
+                </li>
+            </ul>
+        </div>
+        <div class="tw-mt-3">
+            <div class="row tw-border-[1px] tw-rounded tw-border-[#e5e9f2]">
+                <div class="card border-0 p-0">
+                    <div class="card-body ">
+
+                        <div class="row  ">
+                            <div class="col-md-6 col-6">
+                                <div class="tw-relative ms-3">
+                                    <input type="text" class="tw-form-control-search" placeholder="Search">
+                                    <i
+                                        class="ph-bold ph-magnifying-glass tw-absolute tw-left-0 tw-translate-y-[70%] tw-text-gray-400 tw-font-bold"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-6 tw-flex tw-items-center tw-justify-end tw-gap-2">
+                                <div>
+                                    <select class="form-select">
+                                        <option value="10">10 per page</option>
+                                        <option value="20">20 per page</option>
+                                        <option value="50">50 per page</option>
+                                        <option value="100">100 per page</option>
+                                        <option value="200">200 per page</option>
+                                    </select>
+                                </div>
+                                <div >
+                                    <select class="form-select">
+                                        <option value="10">All Customers</option>
+                                        <option value="20">Active</option>
+                                        <option value="50">In-Active</option>
+                                        <option value="100">100 per page</option>
+                                        <option value="200">200 per page</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                        </div>
+
+                        <div class="table-responsive mt-3 tw-scroll-m-1 scrollbar-thin">
+                            <table class="table table-striped table-hover tw-min-w-[500px]" >
+                                <thead class="table-bordered">
+                                    <tr>
+                                        <th class="text-center">#</th>
+                                        <th class="text-center tw-flex tw-items-start">Name</th>
+                                        <th class="text-center">Transaction Date</th>
+
+                                        <th class="text-center">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr >
+                                        <td class="tw-text-center">1</td>
+                                        <td class="tw-text-center tw-flex tw-flex-col tw-items-start" >
+                                            <span class="tw-ml-1">Ajit</span>
+                                            <label class="tw-inline-block tw-text-green-500">
+                                                <i class="ph ph-whatsapp-logo mt-1"></i>
+                                                <span class="tw-ml-1">+91 7990054549</span>
+                                            </label>
+                                        </td>
+
+                                        <td class="text-center">28-Sep-2024 15:54</td>
+                                        <td class="text-center tw-text-xl">
+                                            <i class="ph ph-chat-circle-dots"></i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="d-flex justify-content-end">
+                                <!-- <pagination-controls class="pagination"></pagination-controls> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <router-outlet></router-outlet> -->
+    </div>

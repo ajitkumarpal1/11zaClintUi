@@ -1,0 +1,94 @@
+<div class="tw-container-fluid my-4">
+  <!-- header section -->
+  <div class="row">
+    <div class="col-md-6">
+      <h1 class="tw-text-4xl tw-font-bold">Media Sets</h1>
+      <span class="tw-text-sm tw-capitalize text-muted">Manage your media sets</span>
+    </div>
+    <div class="col-md-6 tw-flex tw-items-center tw-justify-end tw-gap-1">
+      <button type="button" class="tw-btn-primary" routerLink="/file-upload">
+        Back
+      </button>
+
+    </div>
+  </div>
+
+  <!-- table preview -->
+  <div class="card my-2">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="tw-relative ms-3">
+            <input type="text" class="tw-form-control-search" placeholder="Search">
+            <i
+              class="ph-bold ph-magnifying-glass tw-absolute tw-left-0 tw-translate-y-[70%] tw-text-gray-400 tw-font-bold"></i>
+          </div>
+        </div>
+        <div class="col-md-6 tw-flex tw-items-center tw-justify-end tw-gap-2">
+          <select class="form-select lg:tw-w-1/4">
+            <option value="10">10 per page</option>
+            <option value="20">20 per page</option>
+            <option value="50">50 per page</option>
+            <option value="100">100 per page</option>
+            <option value="200">200 per page</option>
+          </select>
+        </div>
+      </div>
+      <div class="table-responsive tw-mt-4">
+        <table class="table table-striped table-hover">
+          <thead class="table-bordered">
+            <tr>
+              <th>
+                #
+              </th>
+              <th class="tw-capitalize tw-w-[60%]">Name</th>
+              <th class="tw-capitalize w-12">No of files</th>
+              <th class="tw-capitalize">Created At</th>
+              <th class="tw-capitalize">Updated At</th>
+              <th class="tw-capitalize">Action</th>
+            </tr>
+          </thead>
+          <tbody *ngIf="imageSets?.docs?.length">
+            <tr
+              *ngFor="let mediaSet of imageSets.docs || [] | paginate: { itemsPerPage: 10, currentPage: imageSets.page} ; let i = index">
+              <td>
+                {{i+1}}
+              </td>
+              <td>
+                <div class="tw-flex tw-items-center tw-gap-3 tw-w-full tw-flex-wrap tw-justify-start">
+                  <div *ngFor="let item of mediaSet.files">
+                    <app-image-preview *ngIf="item.file_mime?.includes('image')"
+                      [imageUrl]="'https://engees11zamedia.11za.in/internal-11za/'+item.file_url || ''" [width]="'64px'"
+                      [height]="'64px'">
+                    </app-image-preview>
+                    <div *ngIf="!item.file_mime?.includes('image')"
+                      class="tw-w-16 tw-h-16 tw-bg-gray-500 tw-flex tw-justify-center tw-items-center tw-rounded-md">
+                      <i class="{{getFileIcon(item.file_mime||'')}} tw-text-3xl tw-text-white"></i>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="badge bg-dark">
+                  {{mediaSet.files?.length || 0}}
+                </div>
+              </td>
+              <td>{{ mediaSet.createdAt | date : 'dd-MMM-yyyy hh:mm' }}</td>
+              <td>{{ mediaSet.updatedAt | date : 'dd-MMM-yyyy hh:mm' }}</td>
+              <td>
+                <button type="button" class="btn-secondary btn-sm ms-2 tw-text-2xl"><i
+                    class="ph-fill ph-pencil-simple"></i></button>
+                <button type="button" class="btn-secondary btn-sm ms-2 tw-text-2xl"><i
+                    class="ph-fill ph-trash-simple"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="d-flex align-items-center justify-content-end tw-mt-4">
+          <pagination-controls class="tw-text-primary" (pageChange)="imageSets.page = $event"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

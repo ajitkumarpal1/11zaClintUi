@@ -1,0 +1,140 @@
+<div class="container px-4 px-sm-0 ">
+  <div class="row my-5 ">
+    <div class="col-md col tw-leading-9 tw-p-0">
+      <h1 class="fs-1 fw-medium tw-text-blue-950">Label</h1>
+      <div class="text-muted fw-medium">Manage Your Label</div>
+    </div>
+    <div class="col-md-auto col-auto tw-space-x-2 tw-p-0 ">
+      <button type="button" class="tw-btn-outline-primary" (click)="onAddLabel()">
+        <i class="ph-bold ph-plus"></i>
+      </button>
+      <button class="tw-btn-primary "><a [routerLink]="['/customers']">Back</a></button>
+    </div>
+    <div class="card tw-mt-5">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md">
+            <div class="tw-relative ms-3">
+              <input type="text" class="tw-form-control-search" placeholder="Search">
+              <i
+                class="ph-bold ph-magnifying-glass tw-absolute tw-left-0 tw-translate-y-[70%] tw-text-gray-400 tw-font-bold"></i>
+            </div>
+          </div>
+          <div class="col-md-6 tw-flex tw-items-center tw-justify-end">
+            <select class="form-select lg:tw-w-1/4">
+              <option value="10">10 per page</option>
+              <option value="20">20 per page</option>
+              <option value="50">50 per page</option>
+              <option value="100">100 per page</option>
+              <option value="200">200 per page</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-responsive mt-4">
+          <table class="table table-hover table-striped">
+            <thead class="table-bordered">
+              <tr class="text-muted">
+                <th class="text-center">#</th>
+                <th>Label</th>
+                <th>Default</th>
+                <th class="text-center">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-center">1</td>
+                <td>Kaushal</td>
+                <td>
+                  <span class="badge tw-bg-[#cbe9d2] text-success p-2 rounded-2">True</span>
+                </td>
+                <td class="tw-space-x-2 text-center">
+                  <button>
+                    <i class="ph-fill ph-pencil-simple-line text-secondary"></i>
+                  </button>
+                  <button>
+                    <i class="ph-fill ph-trash-simple text-secondary"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-center">1</td>
+                <td>Kaushal</td>
+                <td>
+                  <span class="badge tw-bg-[#cbe9d2] text-success p-2 rounded-2">order cancelled</span>
+                </td>
+                <td class="tw-space-x-2 text-center">
+                  <button>
+                    <i class="ph-fill ph-pencil-simple-line text-secondary"></i>
+                  </button>
+                  <button>
+                    <i class="ph-fill ph-trash-simple text-secondary"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td class="text-center">1</td>
+                <td>Kaushal</td>
+                <td>
+                  <span class="badge tw-bg-[#cbe9d2] text-success p-2 rounded-2">order cancelled</span>
+                </td>
+                <td class="tw-space-x-2 text-center">
+                  <button>
+                    <i class="ph-fill ph-pencil-simple-line text-secondary"></i>
+                  </button>
+                  <button>
+                    <i class="ph-fill ph-trash-simple text-secondary"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="pagination d-flex justify-content-end">
+          <pagination-controls class="pagination"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="add-Label" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fw-bold tw-text-[23px] tw-text-[#192249]" id="staticBackdropLabel">
+          New Customer
+        </h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="" ngNativeValidate>
+          <div class="row mb-3">
+            <div class="col-md-12">
+              <label for="Name" class="mb-2">Label <code>*</code></label>
+              <input type="text" name="" id="" placeholder="Enter Label Name" class="form-control" required/>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-2 ">
+              <label for="color" class="mb-2">Color <code>*</code></label>
+              <div><input type="color" class="form-control form-control-lg form-control-color" list="color" required></div>
+            </div>
+            <div class="col-md-8 mt-2">
+              <label for="" class="mb-2">Default Label</label>
+              <div class="form-switch">
+                <input class="form-check-input tw-text-[20px]" type="checkbox" id="flexSwitchCheckDefault" /> <span
+                  class="ms-2">Default</span>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="reset" class="tw-btn-outline-secondary">Clear</button>
+            <button type="submit" class="tw-btn-save tw-text-md">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

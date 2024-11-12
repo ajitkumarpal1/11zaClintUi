@@ -1,0 +1,13 @@
+.active {
+  border-radius: 4px;
+  padding: 0rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #09af72;
+}
+
+.avatar:hover {
+  cursor: pointer;
+  color: white !important;
+}

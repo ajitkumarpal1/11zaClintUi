@@ -1,0 +1,197 @@
+<div class="tw-container-fluid md:tw-container">
+  <div class="row mt-5">
+    <div class="col-md-6">
+      <h1 class="tw-text-4xl tw-font-bold">My Profile</h1>
+      <span class="tw-text-sm tw-capitalize text-muted">Manage your personal information</span>
+    </div>
+    <div class="col-md-6 tw-flex tw-items-center tw-justify-end tw-gap-1">
+      <button type="button" class="tw-btn-primary tw-flex tw-items-center tw-gap-1">
+        Save Changes
+      </button>
+    </div>
+  </div>
+
+  <div class="card my-3">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="" class="form-label">Name <code>*</code></label>
+          <input type="text" class="form-control" placeholder="Enter Name">
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="" class="form-label">Phone </label>
+          <input type="text" class="form-control" placeholder="Enter Name">
+        </div>
+        <div class="col-md-12 mb-3">
+          <label for="" class="form-label">CRM Unique UserId</label>
+          <input type="text" class="form-control" placeholder="Enter Name">
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="" class="form-label">Date Of Birth</label>
+          <input type="date" class="form-control" placeholder="Enter Name">
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="Name" class="mb-2">Gender <code>*</code></label>
+          <div class="tw-flex tw-justify-start tw-gap-3 tw-items-center ">
+            <div class="col-md-2 form-control tw-w-[48%] md:tw-w-[40%] tw-flex tw-gap-2">
+              <input class="form-check-input" type="radio" name="customerview" id="Male" value="{3:option1}" />
+              <label class="form-check-label tw-w-full tw-cursor-pointer" for="Male">Male</label>
+            </div>
+            <div class="col-md-2 form-control tw-w-[48%] md:tw-w-[40%] tw-flex tw-gap-2">
+              <input class="form-check-input" type="radio" name="customerview" id="Female" value="option2" />
+              <label class="form-check-label tw-w-full tw-cursor-pointer" for="Female">Female</label>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8 mb-3">
+          <label for="Name" class="form-label">Email <code>*</code></label>
+          <div class="tw-relative">
+            <input type="email" name="" id="" placeholder="Enter Email" class="form-control" required />
+            <div class="tw-absolute tw-top-[6.5px] tw-right-[10px] tw-h-full">
+              <button class="tw-bg-gray-500 tw-py-[2px] px-3 tw-text-white tw-rounded-md tw-text-sm" type="button">
+                Verify
+              </button>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-2 col-6 md-3">
+          <div class="mb-3">
+            <div class="form-group tw-w-36">
+              <label for="usercolor" class="form-label">Color: <code>*</code></label>
+              <input type="color" class="form-control form-control-color tw-w-[80px]" list="colors">
+              <datalist id="colors">
+                <!-- ngRepeat: color in colors -->
+                <option ng-repeat="color in colors" value="#4CAF50" class="ng-binding ng-scope">#4CAF50</option>
+                <!-- end ngRepeat: color in colors -->
+                <option ng-repeat="color in colors" value="#2196F3" class="ng-binding ng-scope">#2196F3</option>
+                <!-- end ngRepeat: color in colors -->
+                <option ng-repeat="color in colors" value="#9C27B0" class="ng-binding ng-scope">#9C27B0</option>
+                <!-- end ngRepeat: color in colors -->
+                <option ng-repeat="color in colors" value="#FF5722" class="ng-binding ng-scope">#FF5722</option>
+                <!-- end ngRepeat: color in colors -->
+                <option ng-repeat="color in colors" value="#666666" class="ng-binding ng-scope">#666666</option>
+                <!-- end ngRepeat: color in colors -->
+                <option ng-repeat="color in colors" value="#999999" class="ng-binding ng-scope">#999999</option>
+                <!-- end ngRepeat: color in colors -->
+                <option ng-repeat="color in colors" value="#CCCCCC" class="ng-binding ng-scope">#CCCCCC</option>
+                <!-- end ngRepeat: color in colors -->
+                <option ng-repeat="color in colors" value="#0066CC" class="ng-binding ng-scope">#0066CC</option>
+                <!-- end ngRepeat: color in colors -->
+                <option ng-repeat="color in colors" value="#00CCCC" class="ng-binding ng-scope">#00CCCC</option>
+                <!-- end ngRepeat: color in colors -->
+                <option ng-repeat="color in colors" value="#FF6600" class="ng-binding ng-scope">#FF6600</option>
+                <!-- end ngRepeat: color in colors -->
+                <option ng-repeat="color in colors" value="#CC0066" class="ng-binding ng-scope">#CC0066</option>
+                <!-- end ngRepeat: color in colors -->
+                <option ng-repeat="color in colors" value="#663300" class="ng-binding ng-scope">#663300</option>
+                <!-- end ngRepeat: color in colors -->
+                <option ng-repeat="color in colors" value="#00FF66" class="ng-binding ng-scope">#00FF66</option>
+                <!-- end ngRepeat: color in colors -->
+                <option ng-repeat="color in colors" value="#494068" class="ng-binding ng-scope">#494068</option>
+                <!-- end ngRepeat: color in colors -->
+              </datalist>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 mb-3">
+          <label for="color" class="form-labe">Assign Team <code>*</code></label>
+          <ng-select [multiple]="true" [items]="teams" [(ngModel)]="selectedTeams" placeholder="Select Teams"
+            bindLabel="name" bindValue="_id">
+            <ng-template ng-header-tmp>
+              <button (click)="selectAll()" type="button" class="btn btn-sm btn-secondary me-2">Select all</button>
+              <button (click)="unselectAll()" type="button" class="btn btn-sm btn-secondary">Unselect all</button>
+            </ng-template>
+            <ng-template ng-footer-tmp> Selected count: {{ selectedTeams.length }} </ng-template>
+          </ng-select>
+        </div>
+        <div class="col-md-12 mb-3">
+          <label for="tags" class="form-labe">Assign Tags <code>*</code></label>
+          <ng-select [multiple]="true" [items]="teams" [(ngModel)]="selectedTeams" placeholder="Select Tags"
+            bindLabel="name" bindValue="_id">
+            <ng-template ng-header-tmp>
+              <button (click)="selectAll()" type="button" class="btn btn-sm btn-secondary me-2">Select all</button>
+              <button (click)="unselectAll()" type="button" class="btn btn-sm btn-secondary">Unselect all</button>
+            </ng-template>
+            <ng-template ng-footer-tmp> Selected count: {{ selectedTeams.length }} </ng-template>
+          </ng-select>
+        </div>
+        <div class="col-md-12 mb-3">
+          <label for="Name" class="form-label">Designation (Role) <code>*</code></label>
+          <ng-select class="mt-2" placeholder="Designation (Role)" [items]="teams" bindLabel="name"
+            bindValue="_id"></ng-select>
+        </div>
+
+        <hr class="tw-border-dashed tw-border-gray-600 tw-w-[98%] tw-mx-auto tw-my-3">
+
+        <div class="col-md-12">
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input focus:tw-ring-0 focus:tw-outline-none active:tw-ring-0 active:tw-outline-none"
+              type="checkbox" id="enableNumberMasking" />
+            <label class="form-check-label" for="enableNumberMasking">Enable Number Masking</label>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input focus:tw-ring-0 focus:tw-outline-none active:tw-ring-0 active:tw-outline-none"
+              type="checkbox" id="active" />
+            <label class="form-check-label" for="active">Active</label>
+          </div>
+        </div>
+
+        <hr class="tw-border-dashed tw-border-gray-600 tw-w-[98%] tw-mx-auto tw-my-3">
+
+        <div class="col-md-12">
+          <h1 class="tw-text-2xl">Notifications</h1>
+          <span class="tw-text-sm tw-capitalize text-muted">Manage your Notifications</span>
+        </div>
+
+        <hr class="tw-border-dashed tw-border-gray-600 tw-w-[98%] tw-mx-auto tw-my-3">
+
+        <div class="col-md-3 col-sm-6 col-6">
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input focus:tw-ring-0 focus:tw-outline-none active:tw-ring-0 active:tw-outline-none"
+              type="checkbox" id="chat" />
+            <label class="form-check-label tw-capitalize" for="chat">chat</label>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-6">
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input focus:tw-ring-0 focus:tw-outline-none active:tw-ring-0 active:tw-outline-none"
+              type="checkbox" id="payment" />
+            <label class="form-check-label tw-capitalize" for="payment">payment</label>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-6">
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input focus:tw-ring-0 focus:tw-outline-none active:tw-ring-0 active:tw-outline-none"
+              type="checkbox" id="order" />
+            <label class="form-check-label tw-capitalize" for="order">order</label>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-6">
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input focus:tw-ring-0 focus:tw-outline-none active:tw-ring-0 active:tw-outline-none"
+              type="checkbox" id="broadcast" />
+            <label class="form-check-label tw-capitalize" for="broadcast">broadcast</label>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-6">
+          <div class="form-check form-switch">
+            <input
+              class="form-check-input focus:tw-ring-0 focus:tw-outline-none active:tw-ring-0 active:tw-outline-none"
+              type="checkbox" id="autoreply" />
+            <label class="form-check-label tw-capitalize" for="autoreply">autoreply</label>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

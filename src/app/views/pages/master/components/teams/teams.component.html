@@ -1,0 +1,156 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-6">
+      <h1 class="tw-text-4xl tw-font-bold">Teams</h1>
+      <span class="tw-text-sm tw-capitalize text-muted">Manage your teams</span>
+    </div>
+    <div class="col-md-6 tw-flex tw-items-center tw-justify-end tw-gap-1">
+      <button type="button" class="tw-btn-primary tw-flex tw-items-center tw-gap-1">
+        <i
+          class="ph-fill ph-youtube-logo bg-white tw-text-md text-danger tw-w-2 tw-h-2 tw-flex tw-items-center tw-justify-center tw-me-1"></i>
+        Watch Tutorial
+      </button>
+      <button type="button" class="tw-btn-outline-primary" (click)="openEditModel()">
+        <i class="ph-bold ph-plus"></i>
+      </button>
+    </div>
+
+    <div class="col-12">
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="tw-relative ms-3">
+                <input type="text" class="tw-form-control-search" placeholder="Search">
+                <i
+                  class="ph-bold ph-magnifying-glass tw-absolute tw-left-0 tw-translate-y-[70%] tw-text-gray-400 tw-font-bold"></i>
+              </div>
+            </div>
+            <div class="col-md-6 tw-flex tw-items-center tw-justify-end">
+              <select class="form-select lg:tw-w-1/4">
+                <option value="10">10 per page</option>
+                <option value="20">20 per page</option>
+                <option value="50">50 per page</option>
+                <option value="100">100 per page</option>
+                <option value="200">200 per page</option>
+              </select>
+            </div>
+          </div>
+          <div class="table-responsive tw-mt-4">
+            <table class="table table-striped table-hover">
+              <thead class="table-bordered">
+                <tr>
+                  <th scope="col">#</th>
+                  <th class="text-capitalize w-75">Name</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let team of teams | paginate: { itemsPerPage: 10, currentPage: cPage } ; let i = index">
+                  <th scope="row">{{ i + 1 }}</th>
+                  <td>{{ team.name }}</td>
+                  <td class="d-flex align-items-center justify-content-start">
+                    <div class="form-check form-switch">
+                      <input
+                        class="form-check-input focus:tw-ring-0 focus:tw-outline-none active:tw-ring-0 active:tw-outline-none"
+                        type="checkbox" role="switch" checked>
+                    </div>
+                    <button type="button" class="btn-secondary btn-sm ms-2"><i
+                        class="ph-fill ph-pencil-simple-line"></i></button>
+                    <button type="button" class="btn-secondary btn-sm ms-2"><i class="ph-fill ph-trash"></i></button>
+
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="d-flex align-items-center justify-content-end tw-mt-4">
+              <pagination-controls class="tw-text-primary" (pageChange)="cPage = $event"></pagination-controls>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="editTeamsModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="editTeamsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="editTeamsModalLabel">Add Team</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="mb-3">
+              <label for="" class="form-label">Name <code>*</code></label>
+              <input type="text" class="form-control" aria-describedby="helpId" placeholder="" />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="mb-3">
+              <div class="form-group tw-w-36">
+                <label for="usercolor" class="form-label">Color: <code>*</code></label>
+                <input type="color" class="form-control form-control-color tw-w-[80px]" list="colors">
+                <datalist id="colors">
+                  <!-- ngRepeat: color in colors -->
+                  <option ng-repeat="color in colors" value="#4CAF50" class="ng-binding ng-scope">#4CAF50</option>
+                  <!-- end ngRepeat: color in colors -->
+                  <option ng-repeat="color in colors" value="#2196F3" class="ng-binding ng-scope">#2196F3</option>
+                  <!-- end ngRepeat: color in colors -->
+                  <option ng-repeat="color in colors" value="#9C27B0" class="ng-binding ng-scope">#9C27B0</option>
+                  <!-- end ngRepeat: color in colors -->
+                  <option ng-repeat="color in colors" value="#FF5722" class="ng-binding ng-scope">#FF5722</option>
+                  <!-- end ngRepeat: color in colors -->
+                  <option ng-repeat="color in colors" value="#666666" class="ng-binding ng-scope">#666666</option>
+                  <!-- end ngRepeat: color in colors -->
+                  <option ng-repeat="color in colors" value="#999999" class="ng-binding ng-scope">#999999</option>
+                  <!-- end ngRepeat: color in colors -->
+                  <option ng-repeat="color in colors" value="#CCCCCC" class="ng-binding ng-scope">#CCCCCC</option>
+                  <!-- end ngRepeat: color in colors -->
+                  <option ng-repeat="color in colors" value="#0066CC" class="ng-binding ng-scope">#0066CC</option>
+                  <!-- end ngRepeat: color in colors -->
+                  <option ng-repeat="color in colors" value="#00CCCC" class="ng-binding ng-scope">#00CCCC</option>
+                  <!-- end ngRepeat: color in colors -->
+                  <option ng-repeat="color in colors" value="#FF6600" class="ng-binding ng-scope">#FF6600</option>
+                  <!-- end ngRepeat: color in colors -->
+                  <option ng-repeat="color in colors" value="#CC0066" class="ng-binding ng-scope">#CC0066</option>
+                  <!-- end ngRepeat: color in colors -->
+                  <option ng-repeat="color in colors" value="#663300" class="ng-binding ng-scope">#663300</option>
+                  <!-- end ngRepeat: color in colors -->
+                  <option ng-repeat="color in colors" value="#00FF66" class="ng-binding ng-scope">#00FF66</option>
+                  <!-- end ngRepeat: color in colors -->
+                  <option ng-repeat="color in colors" value="#494068" class="ng-binding ng-scope">#494068</option>
+                  <!-- end ngRepeat: color in colors -->
+                </datalist>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="mb-3">
+              <div class="form-check form-switch">
+                <input
+                  class="form-check-input focus:tw-ring-0 focus:tw-outline-none active:tw-ring-0 active:tw-outline-none"
+                  type="checkbox" role="switch" id="flexSwitchCheckDefault" checked>
+                <label class="form-check-label tw-text-md text-muted tw-select-none tw-cursor-pointer"
+                  for="flexSwitchCheckDefault">Toggle
+                  this switch to
+                  active/inactive the
+                  team</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="tw-btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="tw-btn-save">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

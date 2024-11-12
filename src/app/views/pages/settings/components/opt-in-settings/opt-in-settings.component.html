@@ -1,0 +1,102 @@
+<div class="container px-5 px-sm-0 ">
+    <div class="row my-5 mx-0 mx-md-5">
+        <div class="col-md col tw-leading-9">
+            <h1 class="fs-1 fw-medium tw-text-blue-950">Opt-In Management</h1>
+        </div>
+        <div class="col-md-auto col-auto tw-space-x-2">
+            <button type="button" class="tw-btn-primary">
+                Save
+            </button>
+        </div>
+    </div>
+    <div class="row mx-md-5">
+        <div class="col-lg-6 ">
+            <div class="card">
+                <div class="card-header tw-font-semibold tw-text-2xl p-3">
+                    Opt-in Setting
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>Opt-in Keywords</div>
+                        <div class="form-switch">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        The user will have to type exactly one of these messages on which they should be automatically opted-in
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-sm-6 tw-space-y-3">
+                            <input type="text" placeholder="Start" value="Start" class="form-control">
+                            @for (item of optedInMessage; track item.id) {
+                                <div class="input-group mt-2">
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      placeholder="Search here..."
+                                      [(ngModel)]="item.value"
+                                    />
+                                    <span class="input-group-text bg-danger text-white" style="border: 0"
+                                      (click)="deleteoptedInMessage(item.id)"><i class="ph-bold ph-minus"></i></span>
+                                  </div>
+                            }
+                            <button type="button" class="tw-btn-save" (click)="messageToOptin()"><i class="ph-bold ph-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <span>Opt-In Text Meesage</span>
+                            <div class="mt-2">
+                                <textarea placeholder="Thank you." class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 mt-3 mt-lg-0">
+            <div class="card">
+                <h1 class="card-header tw-font-semibold tw-text-2xl p-3">
+                    Opt-Out Setting
+                </h1>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>Opt-out Keywords</div>
+                        <div class="form-switch">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        The user will have to type exactly one of these messages on which they should be automatically opted-out
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-sm-6 tw-space-y-3">
+                            <input type="text" placeholder="Stop" value="Stop" class="form-control">
+                            @for (item of optedOutMessage; track item.id) {
+                                <div class="input-group mt-2">
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      placeholder="Search here..."
+                                      [(ngModel)]="item.value"
+                                    />
+                                    <span class="input-group-text bg-danger text-white" style="border: 0"
+                                      (click)="deleteoptedOutMessage(item.id)"><i class="ph-bold ph-minus"></i></span>
+                                  </div>
+                            }
+                            <button type="button" class="tw-btn-save" (click)="messageToOptOut()"><i class="ph-bold ph-plus"></i></button>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <span>Opt-out Text Meesage</span>
+                            <div class="mt-2">
+                                <textarea placeholder="Thank you." class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,202 @@
+<div class="container-fluid">
+    <div class="row my-5 mx-2">
+        <div class="col-md col tw-leading-9 p-0">
+            <h1 class="fs-1 fw-medium tw-text-blue-950">Message Logs</h1>
+            <div class="text-muted fw-medium">Manage Message Logs</div>
+        </div>
+        <div class="col-md-auto p-0">
+            <div class="d-flex tw-space-x-2">
+                <div class="input-group ">
+                    <input placeholder="Datepicker" type="text" placeholder="Date picker" [(ngModel)]="dateRange"
+                        (ngModelChange)="changeDateDetails()" class="form-control" aria-label="datePicker"
+                        aria-describedby="basic-addon1" bsDaterangepicker #dp="bsDaterangepicker" [bsConfig]="bsConfig" />
+                    <button class="input-group-text" id="basic-addon1" (click)="dp.show()" [attr.aria-expanded]="dp.isOpen"
+                        type="button">
+                        <i class="ph-fill ph-calendar"></i>
+                    </button>
+                </div>
+                <div class="d-flex justify-content-between tw-space-x-2">
+                    <button type="button" class="tw-btn-primary">
+                        Go
+                    </button>
+                    <button type="button" class="tw-btn-primary">
+                        Export
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card tw-mt-5">
+            <div class="card-body">
+                <div class="row ">
+                    <div class="col-md col">
+                        <div class="tw-relative ms-3">
+                            <input type="text" class="tw-form-control-search" placeholder="Search">
+                            <i
+                                class="ph-bold ph-magnifying-glass tw-absolute tw-left-0 tw-translate-y-[70%] tw-text-gray-400 tw-font-bold"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12 tw-flex tw-items-center tw-justify-end tw-space-x-3 mt-3 mt-lg-0">
+                        <select class="form-select lg:tw-w-1/4">
+                            <option value="10">10 per page</option>
+                            <option value="20">20 per page</option>
+                            <option value="50">50 per page</option>
+                            <option value="100">100 per page</option>
+                            <option value="200">200 per page</option>
+                        </select>
+                        <select class="form-select lg:tw-w-1/4">
+                            <option value="">All Messages</option>
+                            <option value="">Paid Messages</option>
+                            <option value="">Free Messages</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-responsive mt-4">
+                    <table class="table table-hover table-striped tw-text-[16px]">
+                        <thead class="table-bordered">
+                            <tr class="text-muted">
+                                <th class="text-center">#</th>
+                                <th>Message ID</th>
+                                <th>Date</th>
+                                <th class="text-center">Channel</th>
+                                <th class="text-center">Direction</th>
+                                <th class="text-center">From</th>
+                                <th class="text-center">To</th>
+                                <th class="text-center">Status</th>
+                                <th >Type</th>
+                                <th class="text-center" width="12%">Is Paid</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center">1</td>
+                                <td> 6c932d27-9ab6-49d9-8c96-f533e703fdde</td>
+                                <td> 1-Oct-2024 10:35</td>
+                                <td class="text-center"><i class="ph-light ph-minus"></i> Whatsapp</td>
+                                <td class="text-center">out-bound</td>
+                                <td class="text-center">+917016875366</td>
+                                <td class="text-center">+917016875366</td>
+                                <td class="text-center">failed</td>
+                                <td >template - 10checknew</td>
+                                <td class="text-center">No</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">1</td>
+                                <td> 6c932d27-9ab6-49d9-8c96-f533e703fdde</td>
+                                <td> 1-Oct-2024 10:35</td>
+                                <td class="text-center"><i class="ph-light ph-minus"></i> Whatsapp</td>
+                                <td class="text-center">out-bound</td>
+                                <td class="text-center">+917016875366</td>
+                                <td class="text-center">+917016875366</td>
+                                <td class="text-center">failed</td>
+                                <td >template - 10checknew</td>
+                                <td class="text-center">No</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">1</td>
+                                <td> 6c932d27-9ab6-49d9-8c96-f533e703fdde</td>
+                                <td> 1-Oct-2024 10:35</td>
+                                <td class="text-center"><i class="ph-light ph-minus"></i> Whatsapp</td>
+                                <td class="text-center">out-bound</td>
+                                <td class="text-center">+917016875366</td>
+                                <td class="text-center">+917016875366</td>
+                                <td class="text-center">failed</td>
+                                <td >template - 10checknew</td>
+                                <td class="text-center">No</td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">1</td>
+                                <td> 6c932d27-9ab6-49d9-8c96-f533e703fdde</td>
+                                <td> 1-Oct-2024 10:35</td>
+                                <td class="text-center"><i class="ph-light ph-minus"></i> Whatsapp</td>
+                                <td class="text-center">out-bound</td>
+                                <td class="text-center">+917016875366</td>
+                                <td class="text-center">+917016875366</td>
+                                <td class="text-center">failed</td>
+                                <td >template - 10checknew</td>
+                                <td class="text-center">No</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination d-flex justify-content-end">
+                    <pagination-controls class="pagination"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="add-roles" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fw-bold tw-text-[23px] tw-text-[#192249]" id="staticBackdropLabel">
+                    Add New Roles
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form ngNativeValidate>
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <label for="Name">Name <code>*</code></label>
+                            <input type="text" name="" id="" placeholder="User Name" class="form-control" required />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <div class="form-switch">
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" /><span
+                                    class="ms-2">Active / Inactive</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="tw-btn-save tw-text-md">Submit</button>
+                        <button type="reset" class="btn btn-secondary text-white">Clear</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="import" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fw-bold tw-text-[23px] tw-text-[#192249]" id="staticBackdropLabel">
+                    Import
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row mb-3">
+                    <label for="Download Sample"><span class="text-primary">Download Sample </span><code>*</code> to
+                        imports
+                        customers.</label>
+                    <div class="col-md-2 mt-2">
+                        <div class="form-switch">
+                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
+                        </div>
+                    </div>
+                    <div class="col-md-3 mt-2">
+                        <div>(Turn on the Toggle only if your sheet is not having country code)</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">Default value for contacts with missing Country code <code>*</code></label>
+                        <!-- <ng-select [items]="country"></ng-select> -->
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-10">
+                        <input class="form-control" type="file" id="formFile">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="tw-flex tw-h-screen tw-items-center tw-justify-center tw-bg-login-bg tw-bg-[#e5ddd5]">
+  <div class="col-lg-3 col-md-6 col-sm-8 col-xs-10 tw-flex tw-flex-col">
+    <img src="/images/logo.png" class="tw-mx-auto tw-w-[200px]" alt="11za logo" />
+    <h1 class="tw-mb-[12px] tw-text-[40px] tw-font-bold text-center">Sign in</h1>
+    <span class="tw-m-0 tw-p-0 tw-mb-[24px] tw-text-[15px] tw-font-normal text-center text-muted">
+      We are Different, We Make You Different.
+    </span>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <input type="text" formControlName="email"
+          class="form-control tw-rounded-[.25rem] tw-px-3 tw-py-[10px] tw-placeholder-gray-400 tw-text-[#495057] tw-border tw-border-[#ced4da] leading-[1.5] focus:tw-border-[#80bdff] focus:tw-outline-none focus:tw-ring-0"
+          id="email" aria-describedby="helpId" placeholder="Enter your email" />
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-danger tw-ms-1">
+          <small *ngIf="loginForm.get('email')?.hasError('required')">Email is required</small>
+          <small *ngIf="loginForm.get('email')?.hasError('email')">Invalid email address</small>
+        </div>
+      </div>
+
+      <div class="tw-relative">
+        <input type="{{ isShowPassword ? 'text' : 'password' }}" formControlName="password"
+          class="form-control tw-rounded-[.25rem] tw-px-3 tw-py-[10px] tw-placeholder-gray-400 tw-text-[#495057] tw-border tw-border-[#ced4da] leading-[1.5] focus:tw-border-[#80bdff] focus:tw-outline-none focus:tw-ring-0"
+          placeholder="Enter your password" aria-label="Password" aria-describedby="basic-addon2">
+        <span (click)="setIsShowPassword()"
+          class="tw-absolute tw-top-[52%] tw-right-3 tw-translate-y-[-50%] tw-cursor-pointer tw-text-xl"
+          id="basic-addon2"><i class="ph-duotone {{ isShowPassword ? 'ph-eye-slash' : 'ph-eye'}}"></i></span>
+      </div>
+      <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-danger tw-ms-1">
+        <small *ngIf="loginForm.get('password')?.hasError('required')">Password is required</small>
+        <small *ngIf="loginForm.get('password')?.hasError('password')">Invalid Password</small>
+      </div>
+
+      <div class="form-check mt-3">
+        <input class="form-check-input  focus:tw-ring-0 focus:tw-outline-none tw-border-gray-400" type="checkbox"
+          value="" id="flexCheckChecked" checked>
+        <label class="form-check-label  tw-text-[#6c757d] tw-text-[14px] tw-select-none tw-cursor-pointer"
+          for="flexCheckChecked">
+          Remember me
+        </label>
+      </div>
+
+      <button type="submit" [disabled]="loginForm.invalid"
+        class="tw-btn-primary tw-w-full tw-rounded-[.25rem] tw-px-3 tw-py-[10px] tw-uppercase tw-text-white tw-text-[15px] tw-mt-3">Sign
+        in</button>
+    </form>
+
+    <div class="tw-text-[14px] tw-text-[#6c757d] tw-text-center tw-mt-3">
+      <a class="tw-text-[#6c757d] tw-text-[14px] tw-text-center tw-cursor-pointer hover:tw-text-gray-800"
+        [routerLink]="['/forgot-password']">
+        Forgot your password?</a>
+    </div>
+  </div>
+</div>

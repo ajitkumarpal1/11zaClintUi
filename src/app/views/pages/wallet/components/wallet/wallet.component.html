@@ -1,0 +1,35 @@
+<div class="container px-4 px-sm-0 ">
+    <div class="row my-5 ">
+        <div class="row p-0">
+            <div class="col-md-6 col-12 ">
+                <h1 class="fs-1 fw-medium tw-text-blue-950">Top-Ups - Balance - Usage</h1>
+                <div class="text-muted fw-medium">Manage your balance and usage with 11za-Wallet</div>
+            </div>
+            <div class="col-md-6 col-auto d-flex justify-content-end mt-2">
+                <div>
+                    <button type="button" class="tw-btn-outline-primary tw-flex tw-items-center tw-gap-1">
+                        <i
+                            class="ph-fill ph-youtube-logo bg-white tw-text-md text-danger tw-w-2 tw-h-2 tw-flex tw-items-center tw-justify-center tw-me-1"></i>
+                        Watch Tutorial
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="row tw-mt-5">
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link tw-cursor-pointer" routerLink="topups"
+                        routerLinkActive="custom-tab-active">Topups</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link tw-cursor-pointer" routerLink="balance-usage"
+                        routerLinkActive="custom-tab-active">Balance & Usage</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link tw-cursor-pointer" routerLink="billing-details"
+                        routerLinkActive="custom-tab-active">Billing Details</a>
+                </li>
+            </ul>
+        </div>
+        <router-outlet></router-outlet>
+    </div>

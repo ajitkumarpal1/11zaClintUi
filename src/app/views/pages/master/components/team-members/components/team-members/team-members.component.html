@@ -1,0 +1,250 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-6">
+      <h1 class="tw-text-4xl tw-font-bold">Team Members</h1>
+      <span class="tw-text-sm tw-capitalize ms-2 text-muted">Manage your team members</span>
+    </div>
+    <div class="col-md-6">
+      <div class="tw-flex tw-items-center tw-justify-end tw-gap-1">
+        <button type="button" class="tw-btn-outline-primary tw-flex tw-items-center tw-gap-1">
+          <i
+            class="ph-fill ph-youtube-logo bg-white tw-text-md text-danger tw-w-2 tw-h-2 tw-flex tw-items-center tw-justify-center tw-me-1"></i>
+          Watch Tutorial
+        </button>
+        <button type="button" class="tw-btn-primary tw-flex tw-items-center tw-gap-1"
+          routerLink="/master/team-members/assign-customers">
+          Assigned Customers
+        </button>
+        <button type="button" class="tw-btn-outline-primary" (click)="openEditModel()">
+          <i class="ph-bold ph-plus"></i>
+        </button>
+      </div>
+    </div>
+    <div class="col-12 my-2">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="tw-relative ms-3">
+                <input type="text" class="tw-form-control-search" placeholder="Search">
+                <i
+                  class="ph-bold ph-magnifying-glass tw-absolute tw-left-0 tw-translate-y-[70%] tw-text-gray-400 tw-font-bold"></i>
+              </div>
+            </div>
+            <div class="col-md-6 tw-flex tw-items-center tw-gap-4 tw-justify-end">
+              <select class="form-select lg:tw-w-1/4">
+                <option selected>All Roles</option>
+                <option value="10">10 per page</option>
+                <option value="20">20 per page</option>
+                <option value="50">50 per page</option>
+                <option value="100">100 per page</option>
+                <option value="200">200 per page</option>
+              </select>
+              <select class="form-select lg:tw-w-1/4">
+                <option selected>All Teams</option>
+                <option value="10">10 per page</option>
+                <option value="20">20 per page</option>
+                <option value="50">50 per page</option>
+                <option value="100">100 per page</option>
+                <option value="200">200 per page</option>
+              </select>
+              <select class="form-select lg:tw-w-1/4">
+                <option value="10">10 per page</option>
+                <option value="20">20 per page</option>
+                <option value="50">50 per page</option>
+                <option value="100">100 per page</option>
+                <option value="200">200 per page</option>
+              </select>
+            </div>
+          </div>
+          <div class="table-responsive mt-3">
+            <table class="table table-hover table-striped">
+              <thead class="table-bordered">
+                <tr class="tw-text-sm">
+                  <th scope="col" [width]="'2%'">#</th>
+                  <th scope="col" [width]="'10%'">Name</th>
+                  <th scope="col" [width]="'10%'">Role</th>
+                  <th scope="col" [width]="'10%'">Teams</th>
+                  <th scope="col">Tags</th>
+                  <th scope="col" [width]="'10%'">Status</th>
+                  <th scope="col" [width]="'5%'">Online Status</th>
+                  <th scope="col" [width]="'15%'">Last Login At</th>
+                  <th scope="col" [width]="'10%'">Action</th>
+                </tr>
+              </thead>
+              <tbody *ngIf="teamMemberDocs.docs">
+                <tr
+                  *ngFor="let team of teamMemberDocs.docs | paginate: { itemsPerPage: teamMemberDocs.limit, currentPage: teamMemberDocs.page }; let i = index">
+                  <th class="tw-text-sm" scope="row">{{ i + 1 }}</th>
+                  <td><span class="tw-text-sm">{{ team.name }}</span></td>
+                  <td class="tw-text-sm">{{ team.roleId?.name || 'N/A' }}</td>
+                  <td>
+                    <div class="tw-flex tw-flex-col tw-gap-1 tw-justify-start tw-items-start">
+                      <span *ngFor="let item of team.teams" class="badge bg-primary">{{ item | titlecase }}</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="tw-flex tw-gap-1 tw-justify-start tw-items-start">
+                      <span *ngFor="let item of team.tags?.preview || []"
+                        class="{{item != '...' ? 'badge bg-primary' : ''}}">{{ item |
+                        titlecase }}</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-check form-switch">
+                      <input
+                        class="form-check-input focus:tw-ring-0 focus:tw-outline-none active:tw-ring-0 active:tw-outline-none"
+                        type="checkbox" role="switch" [(ngModel)]="team.status">
+                    </div>
+                  </td>
+                  <td class="tw-text-center">
+                    <span
+                      class="tw-bg-primary tw-shadow-[0px_-0px_3px_5px] tw-py-[2px] tw-shadow-primary tw-animate-pulse tw-rounded-full">
+                    </span>
+                  </td>
+                  <td class="tw-text-sm">{{ (team.lastLoginAt | date : 'dd-MMM-yyyy: hh:mm') || 'N/A'}}</td>
+                  <td>
+                    <div class="tw-flex tw-justify-start tw-items-center tw-gap-2">
+                      <button type="button">
+                        <i class="ph-bold ph-lock-open text-secondary"></i>
+                      </button>
+                      <button type="button">
+                        <i class="ph-fill ph-pencil-simple-line text-secondary"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="d-flex align-items-center justify-content-end tw-mt-4">
+            <pagination-controls class="tw-text-primary"
+              (pageChange)="teamMemberDocs.page = $event"></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Body -->
+  <div class="modal fade" id="editTeamMembersModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+    role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitleId">
+            Add Team Member
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="row g-3">
+            <div class="col-md-6">
+              <label for="Name" class="mb-2">Name <code>*</code></label>
+              <input type="text" name="" id="" placeholder="Enter Name" class="form-control" required />
+            </div>
+            <div class="col-md-6">
+              <label for="Name" class="mb-2">Phone <code>*</code></label>
+              <input type="text" name="" id="" placeholder="Enter Phone No" class="form-control" required />
+            </div>
+            <div class="col-md-12">
+              <label for="Name" class="mb-2">CRM Unique UserId <code>*</code></label>
+              <input type="text" name="" id="" placeholder="Enter CRM Unique UserId" class="form-control" required />
+            </div>
+            <div class="col-md-6">
+              <label for="Name" class="mb-2">Date Of Birth <code>*</code></label>
+              <input type="date" name="" id="" class="form-control" required />
+            </div>
+            <div class="col-md-6">
+              <label for="Name" class="mb-2">Gender <code>*</code></label>
+              <div class="tw-flex tw-justify-start tw-gap-3 tw-items-center ">
+                <div class="col-md-2 form-control tw-w-[48%] md:tw-w-[40%] tw-flex tw-gap-2">
+                  <input class="form-check-input" type="radio" name="customerview" id="Male" value="{3:option1}" />
+                  <label class="form-check-label" for="Male">Male</label>
+                </div>
+                <div class="col-md-2 form-control tw-w-[48%] md:tw-w-[40%] tw-flex tw-gap-2">
+                  <input class="form-check-input" type="radio" name="customerview" id="Female" value="option2" />
+                  <label class="form-check-label" for="Female">Female</label>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-10">
+              <label for="Name" class="mb-2">Email <code>*</code></label>
+              <input type="email" name="" id="" placeholder="Enter Email" class="form-control" required />
+            </div>
+            <div class="col-md-2">
+              <label for="Name" class="mb-2">Color <code>*</code></label>
+              <input type="color" name="" id="" class="form-control tw-w-full tw-h-[40px]" required />
+            </div>
+            <div class="col-md-6">
+              <label for="Name" class="mb-2">Password <code>*</code></label>
+              <input type="{{ isShowPassword ? 'text' : 'password' }}" name="" id="" placeholder="Enter password"
+                class="form-control" required />
+            </div>
+            <div class="col-md-6">
+              <label for="Name" class="mb-2">Confirm Password <code>*</code></label>
+              <div class="tw-relative">
+                <input type="{{ isShowPassword ? 'text' : 'password' }}" name="" id=""
+                  placeholder="Enter confirm password" class="form-control" required />
+                <span (click)="setIsShowPassword()"
+                  class="tw-absolute tw-top-[52%] tw-right-3 tw-translate-y-[-50%] tw-cursor-pointer tw-text-xl"
+                  id="basic-addon2"><i class="ph-duotone {{ isShowPassword ? 'ph-eye-slash' : 'ph-eye'}}"></i></span>
+              </div>
+
+            </div>
+            <div class="col-md-12">
+              <span>Customer View</span>
+            </div>
+            <div class="col-md-12">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="customerview" id="customerview1"
+                  value="{3:option1}" />
+                <label class="form-check-label" for="customerview1">Only Assigned Customer</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="customerview" id="customerview2" value="option2" />
+                <label class="form-check-label" for="customerview2">All Customer</label>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="outherChatView" value="option1" />
+                <label class="form-check-label" for="outherChatView">Other Chat View Only</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="groupChatView" value="option2" />
+                <label class="form-check-label" for="groupChatView">Group Chat View Only</label>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <label for="AssignTeam">Assign Teams <code>*</code></label>
+              <ng-select class="mt-2" placeholder="All Teams" [items]="teams" bindLabel="name"
+                bindValue="_id"></ng-select>
+            </div>
+            <div class="col-md-12">
+              <label for="AssignTeam">Assign Tags <code>*</code></label>
+              <input type="text" name="" id="" placeholder="Enter Tags" class="form-control" required />
+            </div>
+            <div class="col-md-12">
+              <label for="AssignTeam">Designation (Role) <code>*</code></label>
+              <input type="text" name="" id="" placeholder="Enter Tags" class="form-control" required />
+            </div>
+            <div class="col-md-12">
+              <div class="form-check form-switch">
+                <input
+                  class="form-check-input focus:tw-ring-0 focus:tw-outline-none active:tw-ring-0 active:tw-outline-none"
+                  type="checkbox" id="enableNumberMasking" />
+                <label class="form-check-label" for="enableNumberMasking">Enable Number Masking</label>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="tw-btn-outline-secondary" data-bs-dismiss="modal">
+            Clear
+          </button>
+          <button type="button" class="tw-btn-save">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
