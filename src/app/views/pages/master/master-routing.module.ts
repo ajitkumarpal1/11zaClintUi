@@ -5,6 +5,11 @@ import { MyProfileComponent } from './components/my-profile/my-profile.component
 import { BusinessProfileComponent } from './components/business-profile/business-profile.component';
 import { RolesComponent } from './components/roles/roles.component';
 import { PermissionComponent } from './components/permission/permission.component';
+import { QueuechatsComponent } from './components/queuechats/queuechats.component';
+import { QueueChatsFirstChildComponent } from './components/queue-chats-first-child/queue-chats-first-child.component';
+import { ChatsAssignmentComponent } from './components/chats-assignment/chats-assignment.component';
+
+
 
 const routes: Routes = [
   {
@@ -12,6 +17,26 @@ const routes: Routes = [
     redirectTo: 'teams',
     pathMatch: 'full'
   },
+  {
+    path: 'queuechats',
+    component: QueuechatsComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'chate',
+        pathMatch: 'full'
+      },
+      {
+        path: 'q-chate',
+        component: QueueChatsFirstChildComponent
+      },
+      {
+        path: 'chats-assignment',
+        component: ChatsAssignmentComponent
+      }
+    ]
+  }
+  ,
   {
     path: 'teams',
     component: TeamsComponent
@@ -29,12 +54,12 @@ const routes: Routes = [
     loadChildren: () => import('./components/team-members/team-members.module').then(m => m.TeamMembersModule)
   },
   {
-    path:'roles',
-    component:RolesComponent
+    path: 'roles',
+    component: RolesComponent
   },
   {
-    path:'permissions',
-    component:PermissionComponent
+    path: 'permissions',
+    component: PermissionComponent
   }
 ];
 

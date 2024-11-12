@@ -9,6 +9,7 @@ import { MyProfileComponent } from './components/my-profile/my-profile.component
 import { BusinessProfileComponent } from './components/business-profile/business-profile.component';
 import { PermissionComponent } from './components/permission/permission.component';
 import { RolesComponent } from './components/roles/roles.component';
+import { QueuechatsComponent } from './components/queuechats/queuechats.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { RolesComponent } from './components/roles/roles.component';
     MyProfileComponent,
     BusinessProfileComponent,
     PermissionComponent,
-    RolesComponent
+    RolesComponent,
+    QueuechatsComponent
   ],
   imports: [
     NgxPaginationModule,
