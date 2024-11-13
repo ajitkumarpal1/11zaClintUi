@@ -23,7 +23,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'chate',
+        redirectTo: 'q-chate',
         pathMatch: 'full'
       },
       {
